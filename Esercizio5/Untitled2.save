@@ -1,0 +1,4 @@
+/* **Esercizio 6** scriveree il risultato in output.txt, mantenendo la stessa struttura (spazi, ritorni a capo)
+e convertendo tutto in minuscolo. La cifratura scambia le lettere a coppie partendo da sinistra;
+se la parola ha un numero dispari di caratteri l'ultimo non viene scambiato.
+Esempio: ciao a voi tutti → icoa a oiv uttti.*/
