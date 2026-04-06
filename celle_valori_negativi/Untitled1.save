@@ -1,0 +1,6 @@
+/* ESERCIZIO 3 (Tipo: Matrici - Ricerca)
+Un ﬁle contiene una matrice di RxC numeri interi con R e C noti a priori (#deﬁne)
+separati da spazi.
+Si scriva un programma C89 che determini il valore medio di tutte le celle e stampi a
+video le coordinate (r, c) delle celle con valori minori o uguali al 30% di questo valore.*/
+
