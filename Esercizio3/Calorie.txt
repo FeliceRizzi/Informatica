@@ -1,5 +1,0 @@
-arancia 100
-banana 200
-kiwi 300
-pompelmo 400
-anguria 700
