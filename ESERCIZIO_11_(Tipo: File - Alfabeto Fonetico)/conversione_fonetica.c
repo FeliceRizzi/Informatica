@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#define N 36
+
+int main () {
+FILE *fp_in, *fp_out, *fp_fon;
+int i,j, p, indice;
+char fonetico[36][20], parola[20], lettera[2];
+char nomefile_in[50], nomefile_out[50];
+char c;
+
+fp_fon = fopen("fonetico.txt", "r");
+if(fp_fon == NULL){
+    printf("ERRORE: impossibile aprire il file 'fonetico.txt'.\n");
+
+    return -1;
+}
+
+
+for(i = 0; i < N;i++){
+    fscanf(fp_fon,"%s %s",lettera, parola);
+
+    if(lettera[0] >= 'A' && lettera[0] <= 'Z'){
+        indice = lettera[0] - 'A';
+
+    }
+    else if (lettera[0] >= '0' && lettera[0] <= '9'){
+        indice = 26 + (lettera[0] - '0');
+    }else {
+            printf("Simbolo non valido.\n");
+            return -1;
+        }
+    strcpy(fonetico[indice],parola);
+    }
+fclose(fp_fon);
+
+
+printf("Digita il file di input: ");
+scanf("%49s", nomefile_in);
+fp_in = fopen(nomefile_in, "r");
+if(fp_in == NULL){
+  printf("ERRORE: impossibile aprire il file %s.\n", nomefile_in);
+
+    return -1;
+}
+printf("File %s aperto correttamente.\n", nomefile_in);
+
+
+printf("Digita il nome del file in cui salvare la conversione: ");
+scanf("%49s",nomefile_out);
+fp_out = fopen(nomefile_out,"w");
+if(fp_out == NULL){
+  printf("ERRORE: impossibile aprire il file %s.\n", nomefile_out);
+
+    return -1;
+}
+printf("File %s aperto correttamente.\n", nomefile_out);
+
+
+while(fscanf(fp_in, "%s",parola) == 1){
+    p = 1;
+    for(i = 0; parola[i] != '\0';i++){
+        c = toupper(parola[i]);
+
+        if(c >= 'A' && c <= 'Z'){
+            indice = c - 'A';
+        }else if(c>= '0' && c <= '9'){
+            indice = 26 + (c-'0');
+        }else{
+            continue;
+        }
+        if(p != 1){
+        fprintf(fp_out," ");
+        }
+        fprintf(fp_out,"%s",fonetico[indice]);
+        p = 0;
+
+    }
+    fprintf(fp_out,"\n");
+}
+
+fclose(fp_in);
+fclose(fp_out);
+
+printf("conversione del testo di %s completteraata correttamente e salvata in %s.\n", nomefile_in, nomefile_out);
+
+
+
+
+return 0;
+}
